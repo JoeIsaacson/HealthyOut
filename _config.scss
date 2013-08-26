@@ -1,0 +1,298 @@
+/*colors*/
+$green: #2abe5c;
+$light-green: #e1f7dd;
+$medium-green: #d2f3cc;
+$darker-green: #c4f0bb;
+
+$light-grey: #f3f7f5;
+$medium-grey: #ebf0ed;
+
+.light-green-background {
+	background-color: $light-green;
+}
+
+.medium-green-background {
+	background-color: $medium-green;
+}
+
+.darker-green-background {
+	background-color: $darker-green;
+}
+
+.green-background {
+	background-color: $green;
+}
+
+.light-grey-background {
+	background-color: $light-grey;
+}
+
+.medium-grey-background {
+	background-color: $medium-grey;
+}
+
+/*fonts*/
+$base: 14px;
+$font-family:'Open Sans', sans-serif;
+
+@mixin normal-base-font () {
+	font-family: $font-family;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@mixin light-base-font () {
+	font-family: $font-family;
+	font-weight: 300;
+	font-style: normal;
+}
+
+@mixin semi-base-font () {
+	font-family: $font-family;
+	font-weight: 600;
+	font-style: normal;
+}
+
+/*structure*/
+@mixin standard-padding {
+	h2,h3,h4,h5, p {
+		padding: 0px 15px 0px;
+	}
+}
+
+$width: 980px; /* total with of page */ 
+$columns: 12; /* number of columns */ 
+$col_margin: 0; /* margin between columns */ 
+$col_width: ($width - ($col_margin * ($columns - 1))) / $columns; 
+$col_total_width: $col_width + $col_margin; 
+
+/* create row div */ 
+@mixin row() {clear: both; width: $width; } 
+
+/* create a column div */ 
+@mixin col($n: 1) { 
+	display: inline-block; 
+	@include span($n); 
+	height: 100%;
+} 
+
+/* make an element span n columns */ 
+@mixin span($n: 1) { 
+	width: ($n * $col_width) + (($n - 1) * $col_margin); 
+	@if $n == $columns { margin-right: 0; } 
+	@else { margin-right: $col_margin; } 
+} 
+
+/* the last column in a row needs this */ 
+@mixin last() { 
+	margin-right: 0; 
+} 
+
+/* prepend n blank columns */ 
+@mixin prepend($n: 1) { 
+	margin-left: $col_total_width * $n 
+} 
+
+/* append n blank columns */ 
+@mixin append($n: 1) { 
+	margin-right: $col_total_width * $n + $col_margin 
+}
+
+.section .column1 {
+	@include col(1);
+}
+
+.section .column2 {
+	@include col(2);
+}
+
+.section .column3 {
+	@include col(3);
+}
+
+.section .column4 {
+	@include col(4); 
+}
+
+.section .column5 {
+	@include col(5);
+}
+
+.section .column6 {
+	@include col(6);
+}
+
+.section .column7 {
+	@include col(7);
+}
+
+.section .column8 {
+	@include col(8); 
+}
+
+.section .column9 {
+	@include col(9);
+}
+
+.section .column10 {
+	@include col(10);
+}
+
+.section .column11 {
+	@include col(11);
+}
+
+.section .column12 {
+	@include col(12);
+}
+
+/*Universal*/
+
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	@include light-base-font;
+	h1,h2,h3,h4,h5 {
+		@include normal-base-font;
+	}
+}
+
+.container {
+	width: 980px;
+	min-width: 980px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 0;
+	height: 100%;
+}
+
+/*Page Specific CSS*/
+
+
+.section { 
+	@include row; 
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+    position: relative;
+    display: table;
+} 
+
+.page-headliner h1 {
+	@include light-base-font;
+	font-size: 3.5em;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+.center {
+	text-align: center;
+}
+
+.left-column,
+.right-column {
+	vertical-align: text-top;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	height: 100%;
+	width: 90%;
+    position: relative;
+    display: table-cell;
+	@include standard-padding;
+	.section-img {
+		margin: 0 auto;
+		display: block;
+		max-width: 90%;
+	}
+}
+
+.left-column .circle {
+	position: absolute;
+	left: 0;
+	background-color: #fff;
+	text-align: center;
+  	border: 2px solid $green;
+  	border-radius: 50%;
+  	height: 50px;
+  	width: 50px;
+  	padding: 0;
+  	margin: 20px 0 0 5px;
+}
+
+.column1.left-column h2,
+.column7.left-column h2 {
+	margin-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: $green;
+	@include light-base-font;
+	font-size: 2.2em;
+}
+
+.left-column .circle h2 {
+	padding: 0;
+	margin: 2px auto;
+}
+
+.section .column8 {
+	vertical-align: text-top;
+	height: 100%;
+	position: relative;
+	h3 {
+		margin-top: 15px;
+	}
+}
+
+.right-column {
+	height: 100%;
+	@include standard-padding;
+}
+
+#section-5 {
+	.left-column {
+		padding-bottom: 200px;
+	}
+
+}
+
+#section-6 {
+	.column8 {
+		padding: 30px 0 20px;
+		h1, h2, h3 {
+			@include normal-base-font;
+	} 
+	.trial-button {
+		border-radius: 4px;
+		margin: 20px 0px 20px;
+		padding: 9px 11px 9px;
+		height: 22px;
+		max-height: 22px;
+		background-color: #f4373e;
+		border-bottom: 1px solid #be2b30;
+		color: #fff;
+		-moz-box-shadow:    0px 2px 3px 1px #ccc;
+  		-webkit-box-shadow: 0px 2px 3px 1px #ccc;
+  		box-shadow:         0px 2px 3px 1px #ccc;
+		}
+	}
+}
+
+#section-7 {
+	.column8 {
+	padding-bottom: 50px;
+	p {
+		padding: 0px 15px 0px 0px;
+	}
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+	}
+}	
+
+
+

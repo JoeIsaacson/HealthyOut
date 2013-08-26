@@ -1,0 +1,70 @@
+/*Page Specific CSS*/
+
+@import config
+
+
+.page-headliner h1 {
+	@include light-base-font;
+	font-size: 3.5em;
+	padding: 0;
+	margin: 0;
+}
+
+.left-column,
+.right-column {
+	vertical-align: text-top;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	height: 100%;
+	min-height: 100px;
+	position: relative;
+}
+
+.left-column .circle {
+	position: absolute;
+	left: 0;
+	background-color: #fff;
+	text-align: center;
+  	border: 2px solid $green;
+  	border-radius: 50%;
+  	height: 50px;
+  	width: 50px;
+  	padding: 0;
+  	margin: 30px auto;
+}
+
+.left-column .circle h2 {
+	padding: 0;
+	margin: 6px auto;
+}
+
+.left-column h2 {
+	padding-left: 0px;
+	color: #2abe5c;
+	@include base-font;
+	font-size: 1.8em;
+}
+
+.left-column img {
+	position: relative;
+	margin: 0 auto;
+	padding-left: 15px;
+	width: 500px;
+	max-width: 500px;
+}
+
+.light-green {
+	background-color: $light-green;
+}
+
+.medium-green {
+	background-color: $medium-green;
+}
+
+.green {
+	background-color: $green;
+}
+
+.test-yellow {
+	background-color: $test-yellow;
+}
